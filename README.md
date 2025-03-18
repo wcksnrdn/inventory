@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inventory Management System
 
-## Getting Started
+Inventory Management System adalah aplikasi berbasis web untuk mengelola stok barang dengan fitur autentikasi role-based access control (RBAC). Aplikasi ini memungkinkan **admin** untuk menambah, mengedit, dan menghapus barang, sementara **staff** hanya dapat melihat daftar inventory.
 
-First, run the development server:
+## 🚀 Teknologi yang Digunakan
+- **Frontend:** Next.js (TypeScript), TailwindCSS, shadcn/ui
+- **Backend:** Node.js, Express.js, PostgreSQL
+- **Autentikasi:** JSON Web Token (JWT)
 
+## 📌 Fitur Utama
+### **1. Autentikasi User (Register & Login)**
+- User dapat melakukan **registrasi** dengan konfirmasi password dan ceklis "Verified Human".
+- User dapat **login** untuk mendapatkan akses ke dashboard inventory.
+- **Token JWT** disimpan di `localStorage` untuk autentikasi.
+
+### **2. Role-Based Access Control (RBAC)**
+- **Admin:** Bisa **menambah, mengedit, dan menghapus** barang di inventory.
+- **Staff:** Hanya bisa **melihat daftar inventory** tanpa akses CRUD.
+
+### **3. CRUD Inventory**
+- **GET /inventory** → Mendapatkan daftar barang (Admin & Staff).
+- **POST /inventory** → Menambahkan barang baru (Hanya Admin).
+- **PUT /inventory/:id** → Mengedit data barang (Hanya Admin).
+- **DELETE /inventory/:id** → Menghapus barang (Hanya Admin).
+
+## 🛠️ Cara Instalasi & Menjalankan Proyek
+### **1. Clone Repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/wcksnrdn/inventory.git
+cd inventory
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2. Setup Backend**
+```bash
+cd backend
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Buat file `.env` di folder `backend` dan tambahkan konfigurasi PostgreSQL:
+```env
+DB_USER=postgres
+DB_HOST=localhost
+DB_NAME=inventory_system
+DB_PASS=yourpassword
+DB_PORT=5432
+JWT_SECRET=your_secret_key
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Jalankan backend:
+```bash
+npx nodemon server.js
+```
 
-## Learn More
+### **3. Setup Frontend**
+```bash
+cd frontend
+npm install
+```
 
-To learn more about Next.js, take a look at the following resources:
+Jalankan frontend:
+```bash
+npm run dev
+```
+Buka **[http://localhost:3000](http://localhost:3000)** di browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎮 Cara Menggunakan
+1. **Registrasi user di** [http://localhost:3000/register](http://localhost:3000/register)
+2. **Login di** [http://localhost:3000/login](http://localhost:3000/login)
+3. **Admin dapat mengelola inventory di** [http://localhost:3000/inventory](http://localhost:3000/inventory)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 Lisensi
+Proyek ini bersifat open-source. Silakan gunakan dan kembangkan sesuai kebutuhan. 🚀
