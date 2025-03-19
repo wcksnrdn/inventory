@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { 
   Card, 
   CardContent, 
-  CardFooter, 
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card";
@@ -43,8 +42,7 @@ import {
   Trash2, 
   Package, 
   User, 
-  LogOut,
-  Settings
+  LogOut
 } from "lucide-react";
 
 interface InventoryItem {

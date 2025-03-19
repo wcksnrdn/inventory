@@ -82,7 +82,8 @@ export default function RegisterPage() {
       } else {
         setError(data.message || "Registrasi gagal, coba lagi.");
       }
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       setError("Terjadi kesalahan pada server. Silakan coba lagi nanti.");
     } finally {
       setIsLoading(false);
@@ -224,6 +225,6 @@ export default function RegisterPage() {
   );
 }
 
-function toast(arg0: { title: string; description: string; }) {
-    throw new Error("Function not implemented.");
+function toast({ title, description }: { title: string; description: string }) {
+    console.log(`${title}: ${description}`);
 }
